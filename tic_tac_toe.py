@@ -2,7 +2,7 @@
 
 def main():
     square_number = number_of_squares()
-    game = show_game(square_number)
+    show_game(square_number)
 
 
 def number_of_squares():
@@ -20,10 +20,12 @@ def show_game(square_number):
 
 
 def players_turn():
+    '''if one player just placed their symbol, move to next player'''
     pass 
 
 
 def update_board():
+    '''what platers turn it is, add their symbol to selected box'''
     pass
 
 
