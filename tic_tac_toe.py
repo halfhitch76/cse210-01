@@ -1,11 +1,14 @@
 '''Logan Hitchcock, Tic Tac Toe'''
 
 def main():
-    square_number = number_of_squares()
+    player = players_turn('')
+    square_number = size_of_gameboard()
+    show_game(square_number)
+    player = players_turn(player)
+    player_move(player, square_number)
     show_game(square_number)
 
-
-def number_of_squares():
+def size_of_gameboard():
     square_number = []
     for i in range(9):
         square_number.append(i + 1)
@@ -19,13 +22,26 @@ def show_game(square_number):
     print(f"{square_number[6]}|{square_number[7]}|{square_number[8]}")
 
 
-def players_turn():
+def players_turn(player):
+    if player == '' or 'x':
+        return 'o'
+    elif player == 'o':
+        return 'x'
+
+
     '''if one player just placed their symbol, move to next player'''
-    pass 
+
+
+def player_move(player, square_number):
+    if player == 'x':
+        player_move = input(f'{player} please choose a slot (1-9).')
+        square_number[player_move - 1] = player
+        
+
 
 
 def update_board():
-    '''what platers turn it is, add their symbol to selected box'''
+    '''what players turn it is, add their symbol to selected box'''
     pass
 
 
