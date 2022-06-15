@@ -2,13 +2,17 @@
 
 def main():
     player = players_turn('')
-    square_number = size_of_gameboard()
-    show_game(square_number)
-    player = players_turn(player)
-    player_move(player, square_number)
+    square_number = make_gamesquare_number
+    square_number = make_gamesquare_number()
+    winner = declare_winner(square_number)
+    while winner == False:
+        show_game(square_number)
+        player_move(player, square_number)
+        player = players_turn(player)
+
     show_game(square_number)
 
-def size_of_gameboard():
+def make_gamesquare_number():
     square_number = []
     for i in range(9):
         square_number.append(i + 1)
@@ -21,7 +25,6 @@ def show_game(square_number):
     print("-----")
     print(f"{square_number[6]}|{square_number[7]}|{square_number[8]}")
 
-
 def players_turn(player):
     if player == '' or 'x':
         return 'o'
@@ -31,23 +34,32 @@ def players_turn(player):
 
     '''if one player just placed their symbol, move to next player'''
 
-
 def player_move(player, square_number):
     if player == 'x':
         player_move = input(f'{player} please choose a slot (1-9).')
         square_number[player_move - 1] = player
-        
-
-
-
-def update_board():
-    '''what players turn it is, add their symbol to selected box'''
-    pass
-
-
-
-def declare_winner():
+    else:
+        player == 'o'
+        player_move = int(input(f'{player} please choose a slot (1-9).'))
+        square_number[player_move - 1] = player   
+    
+def declare_winner(square_number):
     '''if there is 3 in a row, return true'''
+    if(square_number[0] == square_number[1] == square_number[2] or
+        square_number[3] == square_number[4] == square_number[5] or
+        square_number[6] == square_number[7] == square_number[8] or
+        square_number[0] == square_number[3] == square_number[6] or
+        square_number[1] == square_number[4] == square_number[7] or
+        square_number[2] == square_number[5] == square_number[8] or
+        square_number[0] == square_number[4] == square_number[8] or
+        square_number[2] == square_number[4] == square_number[6]):
+        winner = True
+    else:
+        winner = False
+
+    return winner
+
 
 
 main()
+
