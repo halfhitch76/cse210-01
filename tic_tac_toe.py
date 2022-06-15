@@ -8,6 +8,7 @@ def main():
     while winner == False:
         show_game(square_number)
         player_move(player, square_number)
+        declare_winner(square_number)
         player = players_turn(player)
 
     show_game(square_number)
@@ -26,7 +27,7 @@ def show_game(square_number):
     print(f"{square_number[6]}|{square_number[7]}|{square_number[8]}")
 
 def players_turn(player):
-    if player == '' or 'x':
+    if player == '' or player == 'x':
         return 'o'
     elif player == 'o':
         return 'x'
@@ -36,10 +37,9 @@ def players_turn(player):
 
 def player_move(player, square_number):
     if player == 'x':
-        player_move = input(f'{player} please choose a slot (1-9).')
+        player_move = int(input(f'{player} please choose a slot (1-9).'))
         square_number[player_move - 1] = player
-    else:
-        player == 'o'
+    elif player == 'o':
         player_move = int(input(f'{player} please choose a slot (1-9).'))
         square_number[player_move - 1] = player   
     
