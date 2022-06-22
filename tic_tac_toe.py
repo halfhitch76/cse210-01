@@ -9,6 +9,7 @@ def main():
         show_game(square_number)
         player_move(player, square_number)
         declare_winner(square_number)
+        
         player = players_turn(player)
 
     show_game(square_number)
@@ -37,15 +38,15 @@ def players_turn(player):
 
 def player_move(player, square_number):
     if player == 'x':
-        player_move = int(input(f'{player} please choose a slot (1-9).'))
+        player_move = int(input(f'Player {player} please choose a slot (1-9).'))
         square_number[player_move - 1] = player
     elif player == 'o':
-        player_move = int(input(f'{player} please choose a slot (1-9).'))
+        player_move = int(input(f'Player {player} please choose a slot (1-9).'))
         square_number[player_move - 1] = player   
     
 def declare_winner(square_number):
     '''if there is 3 in a row, return true'''
-    if(square_number[0] == square_number[1] == square_number[2] or
+    if  (square_number[0] == square_number[1] == square_number[2] or
         square_number[3] == square_number[4] == square_number[5] or
         square_number[6] == square_number[7] == square_number[8] or
         square_number[0] == square_number[3] == square_number[6] or
@@ -53,7 +54,9 @@ def declare_winner(square_number):
         square_number[2] == square_number[5] == square_number[8] or
         square_number[0] == square_number[4] == square_number[8] or
         square_number[2] == square_number[4] == square_number[6]):
+
         winner = True
+
     else:
         winner = False
 
